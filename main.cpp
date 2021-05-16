@@ -3,7 +3,7 @@
 #include <bitset>
 #include <array>
 
-bool solve(std::vector<int> &board, int currentIndex, std::array<std::bitset<9>, 9> &rowValues, std::array<std::bitset<9>, 9> &columnValues, std::array<std::bitset<9>, 9> &cellValues);
+bool Solve(std::vector<int> &board, int currentIndex, std::array<std::bitset<9>, 9> &rowValues, std::array<std::bitset<9>, 9> &columnValues, std::array<std::bitset<9>, 9> &cellValues);
 int GetRow(int index);
 int GetColumn(int index);
 int GetCell(int index);
@@ -59,13 +59,13 @@ int main() {
         }
     }
 
-    solve(board, 0, rows, cols, cells);
+    Solve(board, 0, rows, cols, cells);
 
     std::cout << "Solved: \n";
     print(board);
 }
 
-bool solve(std::vector<int> &board,
+bool Solve(std::vector<int> &board,
            int currentIndex,
            std::array<std::bitset<9>, 9> &rowValues,
            std::array<std::bitset<9>, 9> &columnValues,
@@ -96,7 +96,7 @@ bool solve(std::vector<int> &board,
             columnValues[column].set(i - 1);
             cellValues[cell].set(i - 1);
 
-            if (solve(board, currentIndex + 1, rowValues, columnValues, cellValues)) {
+            if (Solve(board, currentIndex + 1, rowValues, columnValues, cellValues)) {
                 // Sudoku was solved.
                 return true;
             }
